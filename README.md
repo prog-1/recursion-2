@@ -86,15 +86,19 @@ func ListFiles(dir string) []string
 Given the following structure:
 
 ```
-/---- usr
-      +----- bin
-      |          cat
-      |          gcc
-      |          ls
-      +----- local
-             +------ bin
-                        go1.19
-                        mytool
+/
++---- usr
+|      +----- bin
+|      |          cat
+|      |          gcc
+|      |          ls
+|      +----- local
+|             +------ bin
+|                        go1.19
+|                        mytool
++---- home
+      +----- yarcat
+                README.md
 ```
 
 ```go
