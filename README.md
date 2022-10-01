@@ -83,9 +83,10 @@ func ListFiles(dir string) []string
 
 #### Example
 
-Given the following structure:
+```go
+/*
+Assuming the following directory tree structure:
 
-```
 /
 +---- usr
 |      +----- bin
@@ -99,9 +100,7 @@ Given the following structure:
 +---- home
       +----- yarcat
                 README.md
-```
-
-```go
+*/
 fmt.Println(ListFiles("/usr")) 
 Output: [bin/cat bin/gcc bin/ls local/bin/go1.19 local/bin/mytool]
 ```
