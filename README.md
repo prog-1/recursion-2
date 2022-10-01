@@ -64,13 +64,42 @@ https://codeforces.com/contest/527/problem/A
 
 ### Exercise 2
 
-Write a recursive function that returns a slice of all files (not directories)
+Write a recursive function that returns a slice of all file names (not directories)
 in a given directory and its subdirectories. Use
 [os.ReadDir](https://pkg.go.dev/os@go1.19.1#ReadDir) function to get the
 directory content.
 
+The output must contain file paths relative to the directory provided.
+
+Testing hint: create testdata directory, which contains directories and files that
+you can use for testing.
+
+In your solution is isn't allowed to use library functions that implement similar
+functionality e.g. `filepath.Walk`.
+
 ```golang
-func ListFiles(path string) []string
+func ListFiles(dir string) []string
+```
+
+#### Example
+
+Given the following structure:
+
+```
+/---- usr
+      +----- bin
+      |          cat
+      |          gcc
+      |          ls
+      +----- local
+             +------ bin
+                        go1.19
+                        mytool
+```
+
+```go
+fmt.Println(ListFiles("/usr")) 
+Output: [bin/cat bin/gcc bin/ls local/bin/go1.19 local/bin/mytool]
 ```
 
 ### Exercise 3
