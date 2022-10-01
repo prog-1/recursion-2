@@ -102,7 +102,7 @@ Assuming the following directory tree structure:
                 README.md
 */
 fmt.Println(ListFiles("/usr")) 
-Output: [bin/cat bin/gcc bin/ls local/bin/go1.19 local/bin/mytool]
+// Output: [bin/cat bin/gcc bin/ls local/bin/go1.19 local/bin/mytool]
 ```
 
 ### Exercise 3
