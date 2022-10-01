@@ -27,7 +27,10 @@ func floodfill(i, j, n, m int, a [][]int) int {
 		return 0
 	}
 	a[i][j] = 0
-	return 1 + floodfill(i-1, j, n, m, a) + floodfill(i, j-1, n, m, a) + floodfill(i+1, j, n, m, a) + floodfill(i, j+1, n, m, a) + floodfill(i-1, j-1, n, m, a) + floodfill(i-1, j+1, n, m, a) + floodfill(i+1, j+1, n, m, a) + floodfill(i+1, j-1, n, m, a)
+	return 1 + floodfill(i-1, j, n, m, a) + floodfill(i, j-1, n, m, a) +
+		+floodfill(i+1, j, n, m, a) + floodfill(i, j+1, n, m, a) +
+		+floodfill(i-1, j-1, n, m, a) + floodfill(i-1, j+1, n, m, a) +
+		+floodfill(i+1, j+1, n, m, a) + floodfill(i+1, j-1, n, m, a)
 }
 
 func main() {
