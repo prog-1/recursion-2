@@ -10,23 +10,26 @@ func area(s [][]int) int {
 	for i := range checked {
 		checked[i] = make([]bool, m)
 	}
-	return dfs(s, 0, 0, checked)
+	var areas []int
+	for i := range s {
+		for j := range s[i] {
+			areas = append(areas, dfs(s, i, j, checked))
+		}
+	}
+	max := areas[0]
+	for _, area := range areas {
+		if area > max {
+			max = area
+		}
+	}
+	return max
 }
 
 func dfs(s [][]int, i, j int, checked [][]bool) int {
-	if i < 0 || i > len(s)-1 || j < 0 || j > len(s[0])-1 || checked[i][j] {
+	if i < 0 || i > len(s)-1 || j < 0 || j > len(s[0])-1 || checked[i][j] || s[i][j] == 0 {
 		return 0
 	}
 	checked[i][j] = true
-
-	// dfs(s, i, j-1, result, checked)   // Left
-	// dfs(s, i-1, j-1, result, checked) // Top Left
-	// dfs(s, i-1, j, result, checked)   // Top
-	// dfs(s, i-1, j+1, result, checked) // Top Right
-	// dfs(s, i, j+1, result, checked)   // Right
-	// dfs(s, i+1, j+1, result, checked) // Down Right
-	// dfs(s, i+1, j, result, checked)   // Down
-	// dfs(s, i+1, j-1, result, checked) // Down Left
 
 	return s[i][j] + dfs(s, i, j-1, checked) + dfs(s, i-1, j-1, checked) + dfs(s, i-1, j, checked) + dfs(s, i-1, j+1, checked) + dfs(s, i, j+1, checked) + dfs(s, i+1, j+1, checked) + dfs(s, i+1, j, checked) + dfs(s, i+1, j-1, checked)
 }
